@@ -31,9 +31,33 @@
                 });
             },
 
+            handleCommentSubmit: function(comment) {
+                var comments = this.state.data;
+                comment.id = Date.now();
+                var newComments = comments.concat([comment]);
+                this.setState({data: newComments})
+                $.ajax({
+                   url: this.props.url,
+                   dataType: 'json',
+                   type: 'POST',
+                   data: comment,
+                   success: function(data) {
+                     this.setState({data: data});
+                   }.bind(this),
+                   error: function(xhr, status, err) {
+                    this.setState({data: comments})
+                     console.error(this.props.url, status, err.toString());
+                   }.bind(this)
+               });
+            },
+
             componentDidMount: function() {
                 this.loadComments();
                 //setInterval(this.loadComments, this.props.pollInterval);
+            },
+            
+            getInitialState: function() {
+                return {data: []}
             },
 
             render: function(){
@@ -41,7 +65,7 @@
                     <div className="commentBox">
                         <h1>Comments</h1>
                         <CommentList data={this.state.data} />
-                        <CommentForm />
+                        <CommentForm onCommentSubmit={this.handleCommentSubmit} />
                     </div>
                 );
             }
@@ -83,6 +107,7 @@
                 var author = this.state.author.trim();
                 var text = this.state.text.trim();
                 if (text && author) {
+                    this.props.onCommentSubmit({author: author, text: text});
                     this.setState({author: '', text: ''});
                 }
             },
