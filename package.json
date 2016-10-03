@@ -1,0 +1,26 @@
+{
+  "name": "vote-o-matic",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gcgoncalves/react-tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gcgoncalves/react-tutorial/issues"
+  },
+  "homepage": "https://github.com/gcgoncalves/react-tutorial#readme",
+  "devDependencies": {
+    "jest-cli": "15.1.1"
+  },
+  "dependencies": {
+    "immutable": "3.8.1"
+  }
+}
