@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/gcgoncalves/react-tutorial#readme",
   "devDependencies": {
+    "jasmine-immutable-matchers": "^1.1.2",
     "jest-cli": "15.1.1"
   },
   "dependencies": {
